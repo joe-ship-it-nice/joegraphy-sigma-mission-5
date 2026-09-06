@@ -10,8 +10,6 @@ Welcome to **JOEGRAPHY** — Joe's little corner of the Joeniverse.
 
 ![JOEGRAPHY Website Screenshot](./public/screenshot.png)
 
----
-
 ## 🌎 About JOEGRAPHY
 
 **JOEGRAPHY** is a React website shJOEwcasing the countries Joe has visited.
