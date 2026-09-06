@@ -216,11 +216,109 @@ h1 {
   transform: rotate(1deg);
 }
 
-.country-card:hover {
-  transform:
-    rotate(0deg) translateY(-10px) scale(1.02);
-  box-shadow:
-    12px 15px 0 #24133d;
+.country-card {
+  position: relative;
+  overflow: hidden;
+  background: white;
+  border: 3px solid #24133d;
+  border-radius: 25px;
+  box-shadow: 8px 8px 0 #24133d;
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
+  will-change: transform;
+}
+
+.country-card:nth-child(odd) {
+  transform: rotate(-1deg);
+}
+
+.country-card:nth-child(even) {
+  transform: rotate(1deg);
+}
+
+.country-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: 22px;
+  background: url("./public/glitter.png"),
+    linear-gradient(115deg,
+      transparent 10%,
+      rgba(248, 14, 53, 0.45) 25%,
+      rgba(238, 223, 16, 0.45) 35%,
+      rgba(33, 233, 133, 0.45) 45%,
+      rgba(13, 189, 233, 0.5) 55%,
+      rgba(201, 41, 241, 0.5) 65%,
+      transparent 85%);
+  background-size:
+    25%,
+    250% 250%;
+  background-position:
+    0% 0%,
+    0% 50%;
+  background-blend-mode: screen;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  z-index: 5;
+  will-change: opacity, background-position;
+}
+
+.country-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: 22px;
+  background:
+    url("/glitter.png"),
+    linear-gradient(115deg,
+      transparent 10%,
+      rgba(248, 14, 53, 0.45) 25%,
+      rgba(238, 223, 16, 0.45) 35%,
+      rgba(33, 233, 133, 0.45) 45%,
+      rgba(13, 189, 233, 0.5) 55%,
+      rgba(201, 41, 241, 0.5) 65%,
+      transparent 85%);
+  background-size:
+    25%,
+    250% 250%;
+  background-repeat:
+    repeat,
+    no-repeat;
+  background-position:
+    0% 0%,
+    0% 50%;
+  background-blend-mode: screen;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  z-index: 5;
+}
+
+.country-card:hover::after {
+  opacity: 0.65;
+  animation: holoMove 3s ease-in-out infinite;
+}
+
+@keyframes holoMove {
+  0% {
+    background-position:
+      0% 0%,
+      0% 50%;
+  }
+
+  50% {
+    background-position:
+      30% 30%,
+      50% 50%;
+  }
+
+  100% {
+    background-position:
+      0% 0%,
+      100% 50%;
+  }
 }
 
 .country-image {
