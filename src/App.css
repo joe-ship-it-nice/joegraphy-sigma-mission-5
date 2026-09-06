@@ -1,0 +1,301 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700;900&family=Shrikhand&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "DM Sans", sans-serif;
+  color: #24133d;
+  background:
+    radial-gradient(circle at 10% 20%,
+      #ff8bd8 0%,
+      transparent 25%),
+    radial-gradient(circle at 90% 10%,
+      #ffe96b 0%,
+      transparent 25%),
+    radial-gradient(circle at 80% 80%,
+      #65f6bf 0%,
+      transparent 30%),
+    radial-gradient(circle at 20% 90%,
+      #8dd8ff 0%,
+      transparent 25%),
+    #f4c9ff;
+  min-height: 100vh;
+}
+
+.app {
+  min-height: 100vh;
+}
+
+/*HEADER*/
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 50px 7% 5px;
+  border-bottom: 4px solid #24133d;
+}
+
+.logo-title {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.joe-logo {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+}
+
+.mini-title {
+  display: inline-block;
+  background: #ffe853;
+  border: 2px solid #24133d;
+  border-radius: 100px;
+  padding: 8px 16px;
+  font-weight: 900;
+  transform: rotate(-2deg);
+}
+
+h1 {
+  font-family: "Shrikhand", cursive;
+  font-size: clamp(55px, 9vw, 120px);
+  margin: 5px 0;
+  line-height: 0.9;
+  color: #702cff;
+  text-shadow:
+    4px 4px 0 #ffec53,
+    8px 8px 0 #ff579f;
+}
+
+.tagline {
+  font-size: 25px;
+  font-weight: 900;
+  margin-bottom: 5px;
+}
+
+.description {
+  margin-top: 5px;
+  font-size: 16px;
+}
+
+/* COUNTER */
+.country-counter {
+  min-width: 170px;
+  background: #78ffae;
+  border: 3px solid #24133d;
+  border-radius: 50%;
+  padding: 25px;
+  text-align: center;
+  box-shadow: 8px 8px 0 #24133d;
+  transform: rotate(5deg);
+}
+
+.country-counter span {
+  font-family: "Shrikhand", cursive;
+  font-size: 60px;
+  line-height: 1;
+  color: #ff3e9d;
+}
+
+.country-counter p {
+  margin: 3px 0;
+  font-weight: 900;
+}
+
+.country-counter small {
+  font-size: 10px;
+}
+
+.disclaimer {
+  padding: 5px 7%;
+  font-size: 11px;
+  font-style: italic;
+}
+
+/*MAIN LAYOUT*/
+.main-layout {
+  display: grid;
+  grid-template-columns: 230px 1fr;
+  gap: 40px;
+  padding: 5px 7% 60px;
+}
+
+/*FILTERS*/
+.filters {
+  position: sticky;
+  top: 20px;
+  align-self: start;
+  background: rgba(255, 255, 255, 0.7);
+  border: 3px solid #24133d;
+  border-radius: 25px;
+  padding: 22px;
+  box-shadow: 7px 7px 0 #24133d;
+}
+
+.filters h2 {
+  font-family: "Shrikhand", cursive;
+  color: #6c28ff;
+  margin-top: 0;
+}
+
+.filters label {
+  display: block;
+  padding: 12px 0;
+  font-weight: 800;
+  cursor: pointer;
+  border-bottom: 1px dashed #6c28ff;
+}
+
+.filters input {
+  margin-right: 10px;
+  accent-color: #ff3d9a;
+  transform: scale(1.3);
+}
+
+.joe-quote {
+  margin-top: 25px;
+  background: #ffe85d;
+  border: 2px solid #24133d;
+  border-radius: 15px;
+  padding: 12px;
+  font-weight: 900;
+  transform: rotate(-2deg);
+}
+
+/*SECTION TITLE*/
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  margin-bottom: 25px;
+}
+
+.section-heading h2 {
+  font-family: "Shrikhand", cursive;
+  font-size: 40px;
+  margin: 0;
+  color: #5420c7;
+}
+
+.tiny-heading {
+  font-size: 12px;
+  letter-spacing: 4px;
+  font-weight: 900;
+  margin-bottom: 4px;
+}
+
+/*COUNTRY CARDS*/
+.country-grid {
+  display: grid;
+  grid-template-columns:
+    repeat(auto-fill, minmax(220px, 1fr));
+  gap: 30px;
+}
+
+.country-card {
+  background: white;
+  border: 3px solid #24133d;
+  border-radius: 25px;
+  overflow: hidden;
+  box-shadow:
+    8px 8px 0 #24133d;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.country-card:nth-child(odd) {
+  transform: rotate(-1deg);
+}
+
+.country-card:nth-child(even) {
+  transform: rotate(1deg);
+}
+
+.country-card:hover {
+  transform:
+    rotate(0deg) translateY(-10px) scale(1.02);
+  box-shadow:
+    12px 15px 0 #24133d;
+}
+
+.country-image {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  display: block;
+  border-bottom: 3px solid #24133d;
+}
+
+.country-info {
+  padding: 18px;
+}
+
+.country-info h2 {
+  font-family: "Shrikhand", cursive;
+  margin: 0 0 12px;
+  font-size: 26px;
+  color: #6324e6;
+}
+
+.region {
+  display: inline-block;
+  background: #72f5c4;
+  padding: 5px 10px;
+  border-radius: 100px;
+  font-weight: 700;
+}
+
+.rating {
+  font-weight: 700;
+}
+
+.stars {
+  color: #ff3d91;
+  font-size: 24px;
+  letter-spacing: 2px;
+}
+
+/*EMPTY FILTER MESSAGE*/
+.empty-message {
+  padding: 60px;
+  text-align: center;
+  background: #ffe35a;
+  border: 3px dashed #24133d;
+  border-radius: 30px;
+}
+
+/*FOOTER*/
+footer {
+  padding: 30px;
+  text-align: center;
+  font-weight: 900;
+  border-top: 3px solid #24133d;
+  background: #7bf2c1;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.social-icons a {
+  background: #ffe85d;
+  color: #24133d;
+  padding: 8px 15px;
+  border: 2px solid #24133d;
+  border-radius: 20px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: transform 0.2s ease;
+}
+
+.social-icons a:hover {
+  transform: rotate(-3deg) scale(1.1);
+}
