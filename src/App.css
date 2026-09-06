@@ -299,3 +299,82 @@ footer {
 .social-icons a:hover {
   transform: rotate(-3deg) scale(1.1);
 }
+
+/* ADD COUNTRY FORM */
+
+.add-country-form {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 3px solid #24133d;
+}
+
+/* Form title */
+.add-country-form h2 {
+  font-family: "Shrikhand", cursive;
+  color: #ff3d91;
+  font-size: 24px;
+  line-height: 1.2;
+  margin: 0 0 20px;
+}
+
+/* Form labels */
+.add-country-form label {
+  display: block;
+  margin-bottom: 16px;
+  padding: 0;
+  border-bottom: none;
+  font-weight: 800;
+}
+
+/* Inputs and dropdowns */
+.add-country-form input,
+.add-country-form select {
+  display: block;
+  width: 90%;
+  height: 40px;
+  margin-top: 6px;
+  padding: 8px 10px;
+  border: 2px solid #24133d;
+  border-radius: 10px;
+  box-sizing: border-box;
+  font-family: inherit;
+  font-size: 14px;
+}
+
+.add-country-form input[type="text"] {
+  width: 85%;
+  /* width of Country box */
+  height: 38px;
+  /* height of Country box */
+  padding: 8px 10px;
+  margin-top: 6px;
+  border: 2px solid #24133d;
+  border-radius: 10px;
+  font-size: 14px;
+  font-family: inherit;
+  box-sizing: border-box;
+  margin: 6px auto 0;
+}
+
+/* Add button */
+.add-country-form button {
+  width: 90%;
+  padding: 11px 8px;
+  border: 2px solid #24133d;
+  border-radius: 12px;
+  background: #ffe853;
+  color: #24133d;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 900;
+  cursor: pointer;
+  box-shadow: 4px 4px 0 #24133d;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.add-country-form button:hover {
+  transform: translateY(-2px);
+  box-shadow: 5px 6px 0 #24133d;
+}

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState } from "react";
 
 import "./App.css";
 
@@ -35,7 +35,8 @@ function Game({ title, platform, rating, image }) {
 
 function App() {
   // ARRAY OF COUNTRY OBJECTS USING useState
-  const [countries] = useState([
+  // setCountries allows us to add new countries
+  const [countries, setCountries] = useState([
     {
       id: 1,
       title: "Malaysia",
@@ -123,39 +124,87 @@ function App() {
   ]);
 
   // FILTER STATES
-  const [showEastAsia, setShowEastAsia] = useState(true);
+  const [showEastAsia, setShowEastAsia] =
+    useState(true);
+
   const [showSoutheastAsia, setShowSoutheastAsia] =
     useState(true);
-  const [showEurope, setShowEurope] = useState(true);
+
+  const [showEurope, setShowEurope] =
+    useState(true);
+
+  // ADD COUNTRY FORM STATES
+  const [newCountry, setNewCountry] =
+    useState("");
+
+  const [newRegion, setNewRegion] =
+    useState("Southeast Asia");
+
+  const [newRating, setNewRating] =
+    useState(3);
+
+  const [newImage, setNewImage] =
+    useState("");
+
+  // ADD A NEW COUNTRY
+  function addCountry(event) {
+    // Prevent the page from refreshing
+    event.preventDefault();
+
+    const country = {
+      id: Date.now(),
+      title: newCountry,
+      platform: newRegion,
+      rating: Number(newRating),
+
+      // Use favicon if no image was entered
+      image: newImage || "/favicon.svg",
+    };
+
+    // Add the new country to the existing array
+    setCountries([
+      ...countries,
+      country,
+    ]);
+
+    // Clear the form
+    setNewCountry("");
+    setNewRegion("Southeast Asia");
+    setNewRating(3);
+    setNewImage("");
+  }
 
   // FILTER COUNTRIES
-  const filteredCountries = countries.filter((country) => {
-    if (
-      country.platform === "East Asia" &&
-      showEastAsia
-    ) {
-      return true;
-    }
+  const filteredCountries = countries.filter(
+    (country) => {
+      if (
+        country.platform === "East Asia" &&
+        showEastAsia
+      ) {
+        return true;
+      }
 
-    if (
-      country.platform === "Southeast Asia" &&
-      showSoutheastAsia
-    ) {
-      return true;
-    }
+      if (
+        country.platform === "Southeast Asia" &&
+        showSoutheastAsia
+      ) {
+        return true;
+      }
 
-    if (
-      country.platform === "Europe" &&
-      showEurope
-    ) {
-      return true;
-    }
+      if (
+        country.platform === "Europe" &&
+        showEurope
+      ) {
+        return true;
+      }
 
-    return false;
-  });
+      return false;
+    }
+  );
 
   return (
     <div className="app">
+
       {/* HEADER */}
       <header>
         <div>
@@ -195,14 +244,17 @@ function App() {
       </p>
 
       <div className="main-layout">
+
         {/* FILTER SIDEBAR */}
         <aside className="filters">
+
           <h2>🌈 RegJOEns</h2>
 
           <p>
             Where should Joe spawn?
           </p>
 
+          {/* EAST ASIA FILTER */}
           <label>
             <input
               type="checkbox"
@@ -211,9 +263,11 @@ function App() {
                 setShowEastAsia(!showEastAsia)
               }
             />
+
             East Asia
           </label>
 
+          {/* SOUTHEAST ASIA FILTER */}
           <label>
             <input
               type="checkbox"
@@ -224,9 +278,11 @@ function App() {
                 )
               }
             />
+
             Southeast Asia
           </label>
 
+          {/* EUROPE FILTER */}
           <label>
             <input
               type="checkbox"
@@ -235,56 +291,161 @@ function App() {
                 setShowEurope(!showEurope)
               }
             />
+
             Europe
           </label>
 
-          <div className="joe-quote">
-            <p>"Where there's a Joe, there's a way."</p>
-            <p>"The Joe must go on."</p>
-          </div>
-        </aside>
 
-        {/* COUNTRY COLLECTION */}
-        <main>
-          <div className="section-heading">
-            <div>
-              <h2>JOE'S JOEYFUL JOEURNEY</h2>
-            </div>
+          {/* ADD COUNTRY FORM */}
+          <form
+            className="add-country-form"
+            onSubmit={addCountry}
+          >
+            <h2>✈️ Add a Joestination</h2>
+
+            <label>
+              Country
+              <input
+                type="text"
+                value={newCountry}
+                onChange={(event) =>
+                  setNewCountry(event.target.value)
+                }
+                placeholder="Some place..."
+                required
+              />
+            </label>
+
+            <label>
+              RegJOEn
+              <select
+                value={newRegion}
+                onChange={(event) =>
+                  setNewRegion(event.target.value)
+                }
+              >
+                <option value="Southeast Asia">
+                  Southeast Asia
+                </option>
+
+                <option value="East Asia">
+                  East Asia
+                </option>
+
+                <option value="Europe">
+                  Europe
+                </option>
+              </select>
+            </label>
+
+            <label>
+              Joeconomics
+              <select
+                value={newRating}
+                onChange={(event) =>
+                  setNewRating(event.target.value)
+                }
+              >
+                <option value="1">1/5</option>
+                <option value="2">2/5</option>
+                <option value="3">3/5</option>
+                <option value="4">4/5</option>
+                <option value="5">5/5</option>
+              </select>
+            </label>
+
+            <button type="submit">
+              Add Joestination 🌍
+            </button>
+          </form>
+
+          {/* JOE QUOTES */}
+          <div className="joe-quote">
+            <p>
+              "Where there's a Joe, there's a way."
+            </p>
 
             <p>
-              ShJOEwing {filteredCountries.length} of{" "}
-              {countries.length}
+              "The Joe must go on."
             </p>
           </div>
 
-          <div className="country-grid">
-            {filteredCountries.map((country) => (
-              <Game
-                key={country.id}
-                title={country.title}
-                platform={country.platform}
-                rating={country.rating}
-                image={country.image}
-              />
-            ))}
+        </aside>
+
+
+        {/* COUNTRY COLLECTION */}
+        <main>
+
+          <div className="section-heading">
+
+            <div>
+              <h2>
+                JOE'S JOEYFUL JOEURNEY
+              </h2>
+            </div>
+
+            <p>
+              ShJOEwing{" "}
+              {filteredCountries.length} of{" "}
+              {countries.length}
+            </p>
+
           </div>
 
+
+          {/* COUNTRY CARDS */}
+          <div className="country-grid">
+
+            {filteredCountries.map(
+              (country) => (
+
+                <Game
+                  key={country.id}
+                  title={country.title}
+                  platform={
+                    country.platform
+                  }
+                  rating={country.rating}
+                  image={country.image}
+                />
+
+              )
+            )}
+
+          </div>
+
+
+          {/* SHOW IF ALL FILTERS ARE OFF */}
           {filteredCountries.length === 0 && (
+
             <div className="empty-message">
-              <h2>😢 No Joe Zone</h2>
+
+              <h2>
+                😢 No Joe Zone
+              </h2>
+
               <p>
-                You unticked every RegJOEn. Joe has
-                nowhere left to go.
+                You unticked every RegJOEn.
+                Joe has nowhere left to go.
               </p>
+
             </div>
+
           )}
+
         </main>
+
       </div>
 
+
+      {/* FOOTER */}
       <footer>
-        🌏 JOEGRAPHY — Be a Joeker. Every country should be Joed by Joe. 🌏
+
+        🌏 JOEGRAPHY — Be a Joeker.
+        Every country should be Joed by Joe. 🌏
 
         <div className="social-icons">
+
           <a
             href="https://www.instagram.com/joeonn/"
             target="_blank"
@@ -302,11 +463,11 @@ function App() {
           </a>
 
         </div>
+
       </footer>
+
     </div>
   );
 }
 
-
-
-export default App
+export default App;
